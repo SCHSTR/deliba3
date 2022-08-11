@@ -1,12 +1,14 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { TrackService } from './track.service';
-import { CreateTrackDto } from './dto/create-track.dto';
-import { UpdateTrackDto } from './dto/update-track.dto';
+// import { CreateTrackDto } from './dto/create-track.dto';
+// import { UpdateTrackDto } from './dto/update-track.dto';
+import { Public } from 'src/auth/constants';
 
 @Controller('track')
 export class TrackController {
   constructor(private readonly trackService: TrackService) {}
-
+  
+  @Public()
   @Get('method=:method&trackcode=:track_code&user=:token')
   main(@Param() params) {
 
